@@ -38,7 +38,7 @@ class LiquidPillService : Service() {
             gravity = Gravity.CENTER
             setPadding(36, 10, 36, 10)
             background = GradientDrawable(
-                GradientDrawable.Orientation.LR,
+                GradientDrawable.Orientation.LEFT_RIGHT,
                 intArrayOf(
                     Color.parseColor("#550E1724"),
                     Color.parseColor("#442BC4F3"),
