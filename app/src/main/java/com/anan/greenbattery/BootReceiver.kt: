@@ -1,0 +1,16 @@
+package com.anan.greenbattery
+
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+
+class BootReceiver : BroadcastReceiver() {
+    override fun onReceive(c: Context, i: Intent) {
+        if (i.action == Intent.ACTION_BOOT_COMPLETED) {
+            val p = c.getSharedPreferences("AnAnGoodLock", Context.MODE_PRIVATE)
+            if (p.getBoolean("quick_panel_on", false)) c.startForegroundService(Intent(c, LiquidQuickPanelService::class.java))
+            if (p.getBoolean("liquid_pill_on", false)) c.startForegroundService(Intent(c, LiquidPillService::class.java))
+            if (p.getBoolean("green_battery_on", false)) c.startForegroundService(Intent(c, ChargingBatteryService::class.java))
+        }
+    }
+}
